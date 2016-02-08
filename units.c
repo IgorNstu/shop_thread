@@ -22,7 +22,7 @@ void * buyer_f (void *arg){
          printf("Я, покупатель № %d, пытался зайти в магазин № %d ,но он был занят\n",my_num + 1 ,i+1);
          continue;
         }
-     /*Если магазин свободен и не пуст, то забираем из него случайное число товара, либо всё,если чисто больше остатка*/
+     /*Если магазин свободен и не пуст, то забираем из него случайное число товара, либо всё,если число больше остатка*/
      else {
          if (shop_stock[i]==0){
              printf("Я, покупатель № %d, зашёл в магазин № %d , но он был пуст\n",my_num + 1, i+1);
@@ -45,7 +45,7 @@ void * buyer_f (void *arg){
          }
      pthread_mutex_unlock(&shop_door[i]);
 
-     if (buyer_bag>=200){
+     if (buyer_bag>200){
          break;
      }
      sleep(3);
@@ -57,8 +57,8 @@ void * buyer_f (void *arg){
 }
 
 
-
-void * loader_f (void * arg){
+/*Потоковая функция загрузчика*/
+void * loader_f (void){
      int r,i;
      int load=0;
      while (1){

@@ -35,7 +35,7 @@ int main(void)
         }
 
     }
-    /*Создаём загрузчки*/
+    /*Создаём загрузчка*/
     r=pthread_create(&loader,NULL,loader_f,NULL);
     if (r!=0){
         perror("Создание потока");
